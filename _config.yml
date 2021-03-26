@@ -1,39 +1,36 @@
 # Site
-repository: sproogen/resume-theme
-favicon: images/favicon.ico
-
-# Content configuration version
-version: 2
+repository: Jaekeun-Lee/Jaekeun-Lee.github.io
+#favicon: images/favicon.ico
 
 # Personal info
-name: Brett Harris
+name: 이재근
 title: Senior Network System Administrator
-email: brett.h@email.co.uk
-website: www.github.com/sproogen/resume-theme
+email: jacklee730@naver.com
+website: https://ljg960730.tistory.com
 
 # Dark Mode (true/false/never)
 darkmode: false
 
 # Social links
-twitter_username: facespics
-github_username:  sproogen
+#twitter_username: facespics
+github_username:  Jaekeun-Lee
 # stackoverflow_username: "00000001"
 # dribbble_username: jekyll
-# facebook_username: jekyll
+facebook_username: 96gllee
 # flickr_username: jekyll
-instagram_username: jameswgrant
-linkedin_username: jameswgrant
+instagram_username: 96.glee
+#linkedin_username: jameswgrant
 # xing_username: jekyll
 # pinterest_username: jekyll
-youtube_username: globalmtb
+#youtube_username: globalmtb
 # googleplus_username: +jekyll
 # orcid_username: 0000-0000-0000-0000
 
 # Additional icon links
-additional_links:
-- title: itsgoingto.be
-  icon: fas fa-globe
-  url: https://www.itsgoingto.be
+#additional_links:
+#- title: itsgoingto.be
+#  icon: fas fa-globe
+#  url: https://www.itsgoingto.be
 # - title: another link
 #   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&m=free)
 #   url: Link url (eg. https://google.com)
