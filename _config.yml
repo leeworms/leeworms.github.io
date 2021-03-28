@@ -62,24 +62,25 @@ content:
             url: https://www.notion.so/b3417dfd21544aa7b9b7e2f7f585e360
         quote: >
           프로젝트 진행 중 경험했던 기술들 입니다.
-          <a href="https://www.notion.so/b3417dfd21544aa7b9b7e2f7f585e360" style="color:#000; font-style:normal;"> <br/> <span style="color:#ff4040">자세한 기술 숙련도</span>는 아이콘 또는 이 문장 클릭을 통해 확인 가능합니다! </a>            
+          <a href="https://www.notion.so/b3417dfd21544aa7b9b7e2f7f585e360" target="_blank" style="color:#000; font-style:normal;"> <br/> <span style="color:#ff4040">자세한 기술 숙련도</span>는 아이콘 또는 이 문장 클릭을 통해 확인 가능합니다! </a>            
         
       - layout: top-left
         title: Backend
         description: | # this will include new lines to allow paragraphs
-          * Java, Python, Php, NodeJS
+          * Java, Python, Php, JSP, NodeJS
           * Spring Boot, Spring MVC, Spring Batch, Spring Security, Spring Data JPA
           * JPA, Querydsl, Hibernate
           * Junit4/5
           * Gradle, Maven
+          * Thymeleaf, Mustache
           * Eclipse, IntelliJ, Visual Studio Code
       
       - layout: top-left
         title: Frontend
         description: | # this will include new lines to allow paragraphs
           * HTML5, CSS3
-          * Javascript(ES5, ES6), jQuery
-          * Vue.js
+          * Javascript(ES5, ES6)
+          * jQuery, Bootstrap, Vue.js
 
       - layout: top-left
         title: DevOps
@@ -87,8 +88,112 @@ content:
           * Oracle, MySQL, MariaDB
           * Jenkins, TravisCI, AWS Code Deploy
           * RDS (MariaDB), S3, EC2
-          * Tomcat
+          * Tomcat, Nginx
+          <br/><br/><br/>
 
+  - title: Projects # Title for the section
+    layout: list # Type of content section (list/text)
+    content:
+      - layout: top-middle
+        additional_links:
+          - title: 포트폴리오 상세 페이지
+            icon: fa fa-th-list
+            url: https://www.notion.so/99f6b5d43530410ba05aa08c2bbc5c71"
+        quote: >
+          웹/앱 관련 개발 프로젝트입니다.
+          <a href="https://www.notion.so/99f6b5d43530410ba05aa08c2bbc5c71" target="_blank" style="color:#000; font-style:normal;"> <br/> <span style="color:#ff4040">자세한 포트폴리오 내용</span>은 아이콘 또는 이 문장 클릭을 통해 확인 가능합니다! </a>            
+        
+      - layout: top-left
+        title: Web Service
+        caption: 2020.03
+        additional_links:
+          - title: jacklee-springboot-webservice
+            icon: fab fa-github
+            url: https://github.com/Jaekeun-Lee/jacklee-springboot-webservice
+        quote: >
+          AWS EC2, RDS, ORM(JPA), CI/CD 학습 목적의 개인 프로젝트
+        description: | # this will include new lines to allow paragraphs
+          <mark>Java</mark> <mark>Springboot</mark> <mark>JPA</mark> <mark>MariaDB</mark> <mark>Gradle</mark> <mark>EC2</mark> <mark>RDS</mark> <mark>S3</mark> <mark>Travis</mark> <mark>SpringSecurity</mark> <mark>Mustache</mark> <mark>IntelliJ</mark> 
+          
+          editing
+
+
+          ||
+      
+      - layout: top-left
+        title: Baeum Project
+        sub_title: Team Project
+        caption: 2020.01 - 2020.02
+        link: github.com/Jaekeun-Lee/spring-project
+        quote: >
+          S/W 개발자 매칭 플랫폼 서비스 구현
+        description: | # this will include new lines to allow paragraphs
+          <mark>Java</mark> <mark>Springboot</mark> <mark>Mybatis</mark> <mark>Oracle11g</mark> <mark>Gradle</mark> <mark>Thymeleaf</mark> <mark>SpringSecurity</mark> <mark>IntelliJ</mark> 
+          
+          editing
+
+
+          ||
+
+      - layout: top-left
+        title: M2MShop
+        caption: 2020.09 - 2020.11
+        link: github.com/Jaekeun-Lee/Model2MVCShop
+        quote: >
+          MVC 모델2 패턴 (2 Layer Architecture) 으로 구현한 쇼핑몰 프로젝트
+        description: | # this will include new lines to allow paragraphs
+          <mark>Java</mark> <mark>SpringMVC</mark> <mark>Mybatis</mark> <mark>Oracle11g</mark> <mark>JSP</mark> <mark>jQuery</mark> <mark>Eclipse</mark> 
+
+          editing
+
+
+          ||
+
+      - layout: top-left
+        title: STAPL
+        sub_title: Team Project
+        caption: 2020.06 - 2020.07
+        link: github.com/Jaekeun-Lee/android
+        quote: >
+          AI를 활용한 물체인식 영어공부 앱 개발
+        description: | # this will include new lines to allow paragraphs
+          <mark>Java</mark> <mark>php</mark> <mark>MySQL</mark> <mark>TensorFlow</mark> <mark>VisualStudioCode</mark> <mark>AndroidStudio</mark>
+
+          editing 
+          <br/><br/><br/>
+
+  - title: Education # Title for the section
+    layout: list # Type of content section (list/text)
+    content:
+      - layout: left
+        title: BitCamp
+        sub_title: Web Developer Edu
+        caption: 2020.09 - 2021.02
+        description: | # this will include new lines to allow paragraphs
+          디지털컨버전스 기반 Framework 전문 개발자 양성과정
+          * Spring Framework 기반 웹 개발 학습
+          * OOP Base Cmd Mini Project
+          * FrameWork Base Smart Project
+          * UI/UX Base Web Project
+
+      - layout: left
+        title: Konyang University
+        sub_title: Convergence IT
+        caption: 2015.03 - 2021.02
+        description: | # this will include new lines to allow paragraphs
+          융합 IT / 융합 디자인(복수전공) 학위 취득
+
+          <br/><br/><br/>
+
+  - title: A Little More About Me
+    layout: text
+    content: | # this will include new lines to allow paragraphs
+      수상 내역 :
+      * 2019.11 - 캡스톤 디자인 대회 3등 수상
+      * 2019.12 - ICT진흥 협회장상 수상 / 2019 ICT 융합공모전
+      
+      자격증 :
+      * 2019.11 - SQLD (SQL Developer)
 
 # Footer
 footer_show_references: true
