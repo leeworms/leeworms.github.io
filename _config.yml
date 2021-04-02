@@ -85,8 +85,8 @@ content:
         title: DevOps
         description: | # this will include new lines to allow paragraphs
           * Oracle, MySQL
-          * Jenkins, TravisCI, AWS Code Deploy
-          * RDS (MariaDB), S3, EC2
+          * TravisCI, AWS Code Deploy
+          * RDS, S3, EC2
           * Tomcat, Nginx
           <br/><br/><br/>
 
