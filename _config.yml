@@ -1,6 +1,6 @@
 # Site settings
 title: JaeKeun-Lee
-baseurl: "/ap"
+baseurl: 
 url: "https://jaekeun-lee.github.io/"
 google_analytics: # Tracking ID, e.g. "UA-000000-01"
 
@@ -60,19 +60,4 @@ exclude:
   - "LICENSE"
   - "READE.md"
   - "screenshot.png"
-
-
-# # social
-# social:
-#   email: true
-#   behance:
-#   bitbucket:
-#   dribbble:
-#   facebook: Test
-#   flickr:
-#   github: kssim
-#   google_plus:
-#   instagram:
-#   keybase:
-#   linkedin: https://www.linkedin.com/in/kssim/ 
 
