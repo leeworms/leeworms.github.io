@@ -1,216 +1,78 @@
-# Site
-repository: Jaekeun-Lee/Jaekeun-Lee.github.io
-#favicon: images/favicon.ico
+# Site settings
+title: JaeKeun-Lee
+baseurl: "/ap"
+url: "https://jaekeun-lee.github.io/"
+google_analytics: # Tracking ID, e.g. "UA-000000-01"
 
-# Content configuration version
-version: 2
+# Author
+author:
+  name: JaeKeun Lee
+  desc: Java & Backend Junior Developer
+  email: ljg960730@naver.com
+  selfie: assets/img/profile.jpg
 
-# Personal info
-name: 이재근
-title: Java & Backend Developer
-email: jacklee730@naver.com
-website: https://ljg960730.tistory.com
-
-# Dark Mode (true/false/never)
-darkmode: false
-
-# Social links
-#twitter_username: facespics
-github_username:  Jaekeun-Lee
-# stackoverflow_username: "00000001"
-# dribbble_username: jekyll
-facebook_username: 96gllee
-# flickr_username: jekyll
-instagram_username: 96.glee
-#linkedin_username: jameswgrant
-# xing_username: jekyll
-# pinterest_username: jekyll
-#youtube_username: globalmtb
-# googleplus_username: +jekyll
-# orcid_username: 0000-0000-0000-0000
-
-# About Section
-# about_title: About Me
-about_profile_image: images/profile.jpg
-about_content: | # this will include new lines to allow paragraphs
-
-  열정은 '어떤 것을 수행함에 있어서 좋아하고 즐기며, 짜증나고 화나는 감정을 복합적으로 느낄 수 있는 행동을 꾸준히 하는 것'이라고 생각합니다.
-  저는 열정적으로 도전하는 개발자 이재근입니다.
-
-  웹을 통해 사람을 연결하고 문제를 해결, 불편함을 개선하는 매력에 빠져 웹 개발의 길을 걷고 있습니다.
-  Java를 시작으로 사회와 코딩을 더욱 폭 넓게 경험하는 사회 새싹 주니어 개발자 입니다.
-  
-  
-  <mark>#도전</mark>  <mark>#소통</mark>  <mark>#신뢰</mark>
-
-
-content:
-  - title: Skill # Title for the section
-    layout: list # Type of content section (list/text)
-    content:
-      - layout: top-middle
-        quote: >
-          개발 과정 중 주로 사용했던 가장 익숙한 기술들 입니다.
-        description: | # this will include new lines to allow paragraphs
-          <h4 style="text-align:center">
-            <mark>Java</mark> <mark>SpringMVC</mark> <mark>Springboot</mark> <mark>jsp</mark> <mark>Mybatis</mark> <mark>Oracle</mark>  
-          </h4>
-          <hr>
-      - layout: top-middle
-        additional_links:
-          - title: 보유기술 숙련도 기술 페이지
-            icon: fa fa-th-list
-            url: https://www.notion.so/b3417dfd21544aa7b9b7e2f7f585e360
-        quote: >
-          프로젝트 진행 중 경험했던 기술들 입니다.
-          <a href="https://www.notion.so/b3417dfd21544aa7b9b7e2f7f585e360" target="_blank" style="color:#000; font-style:normal;"> <br/> <span style="color:#ff4040">자세한 기술 숙련도</span>는 아이콘 또는 이 문장 클릭을 통해 확인 가능합니다! </a>            
-        
-      - layout: top-left
-        title: Backend
-        description: | # this will include new lines to allow paragraphs
-          * Java, JSP
-          * Spring MVC, Spring Boot, Spring Security, Mybatis
-          * Junit4/5
-          * Gradle, Maven
-          * Eclipse, IntelliJ, Visual Studio Code
-      
-      - layout: top-left
-        title: Frontend
-        description: | # this will include new lines to allow paragraphs
-          * HTML5, CSS3
-          * Javascript
-          * jQuery, Bootstrap
-
-      - layout: top-left
-        title: DevOps
-        description: | # this will include new lines to allow paragraphs
-          * Oracle, MySQL
-          * TravisCI, AWS Code Deploy
-          * RDS, S3, EC2
-          * Tomcat, Nginx
-          <br/><br/><br/>
-
-  - title: Projects # Title for the section
-    layout: list # Type of content section (list/text)
-    content:
-      - layout: top-middle
-        additional_links:
-          - title: 포트폴리오 상세 페이지
-            icon: fa fa-th-list
-            url: https://www.notion.so/99f6b5d43530410ba05aa08c2bbc5c71"
-        quote: >
-          웹/앱 관련 개발 프로젝트입니다.
-          <a href="https://www.notion.so/99f6b5d43530410ba05aa08c2bbc5c71" target="_blank" style="color:#000; font-style:normal;"> <br/> <span style="color:#ff4040">자세한 포트폴리오 내용</span>은 아이콘 또는 이 문장 클릭을 통해 확인 가능합니다! </a>            
-        
-      - layout: top-left
-        title: Web Service
-        caption: 2020.03
-        link: http://ec2-3-36-161-43.ap-northeast-2.compute.amazonaws.com:8080/
-        link_text: jw-webservicePractice.com
-        additional_links:
-          - title: jacklee-springboot-webservice
-            icon: fab fa-github
-            url: https://github.com/Jaekeun-Lee/jacklee-springboot-webservice
-        quote: >
-          Spring Boot 기반 CRUD 에디터 기능을 갖춘 웹 어플리케이션.
-        description: | # this will include new lines to allow paragraphs
-          <mark>Java</mark> <mark>Springboot</mark> <mark>JPA</mark> <mark>MariaDB</mark> <mark>Gradle</mark> <mark>EC2</mark> <mark>RDS</mark> <mark>S3</mark> <mark>Travis</mark> <mark>SpringSecurity</mark> <mark>IntelliJ</mark> 
-          
-          * AWS EC2, RDS, ORM(JPA), CI/CD 학습 목적의 개인 프로젝트
-          * SpringSecurity와 Oauth2로 SNS 로그인 기능 구현
-          * Travis CI, AWS S3, CodeDeploy를 활용한 CI/CD 경험
-          * TestCode 중요성, 서버 템플릿 엔진과 클라이언트 템플릿 엔진 차이 학습
-          * JPA Auditing, JDK 8 이전의 Date와 Calendar 클래스의 문제점, 그리고 개선된 LocalDate 학습
-      
-      - layout: top-left
-        title: Baeum Project
-        sub_title: Team Project
-        caption: 2020.01 - 2020.02
-        link: github.com/Jaekeun-Lee/spring-project
-        quote: >
-          S/W 개발자 매칭 플랫폼 서비스 구현
-        description: | # this will include new lines to allow paragraphs
-          <mark>Java</mark> <mark>Springboot</mark> <mark>Mybatis</mark> <mark>Oracle11g</mark> <mark>Gradle</mark> <mark>Thymeleaf</mark> <mark>SpringSecurity</mark> <mark>IntelliJ</mark> 
-
-          * Component별 단위 테스트 실행
-          * 타임리프 레이아웃 적용으로 공통 부분 Fragment화
-          * Mybatis Association, collection 을 이용 쿼리 갯수 감소, 1:N 관계의 테이블 쿼리 성능 개선
-          * jQuery, Ajax를 이용한 댓글, 무한스크롤 비동기 방식 처리
-
-      - layout: top-left
-        title: M2MShop
-        caption: 2020.09 - 2020.11
-        link: github.com/Jaekeun-Lee/Model2MVCShop
-        quote: >
-          MVC 모델2 패턴 (2 Layer Architecture) 으로 구현한 쇼핑몰 프로젝트
-        description: | # this will include new lines to allow paragraphs
-          <mark>Java</mark> <mark>SpringMVC</mark> <mark>Mybatis</mark> <mark>Oracle11g</mark> <mark>JSP</mark> <mark>jQuery</mark> <mark>Eclipse</mark> 
-
-          * 검색조건 유지 & 페이지 나누기 & ROWNUM 이용한 효율적인 Query
-          * JSP에 EL, JSTL 적용
-          * Spring, MyBatis 사용하여 Business Logic 구현 + JUnit
-          * AOP 적용, Transaction 처리하여 Business Logic 구현
-          * JSON 이용, RestFul Server-Client 구현
-          * jQuery Ajax 를 이용, JSON 형식으로 데이터 교환하며 비동기 통신
-          * Bootstrap 적용하여 반응형 UI 구현
-
-      - layout: top-left
-        title: STAPL
-        sub_title: Team Project
-        caption: 2020.06 - 2020.07
-        link: github.com/Jaekeun-Lee/android
-        quote: >
-          AI를 활용한 물체인식 영어공부 앱 개발
-        description: | # this will include new lines to allow paragraphs
-          <mark>Java</mark> <mark>php</mark> <mark>MySQL</mark> <mark>TensorFlow</mark> <mark>VisualStudioCode</mark> <mark>AndroidStudio</mark>
-
-          * Frontend UX/UI 파트 담당
-          * 디자인 컨셉과 일관되고, 효율적 학습을 위한 UX/UI 개선
-          * 비동기 처리와 Splash page 애니메이션 기능 구현
-          <br/><br/><br/>
-
-  - title: Education # Title for the section
-    layout: list # Type of content section (list/text)
-    content:
-      - layout: left
-        title: BitCamp
-        sub_title: Web Developer Edu
-        caption: 2020.09 - 2021.02
-        description: | # this will include new lines to allow paragraphs
-          디지털컨버전스 기반 Framework 전문 개발자 양성과정
-          * Spring Framework 기반 웹 개발 학습
-          * FrameWork Base Project (쇼핑몰, 매칭플랫폼 프로젝트 수행)
-          * 프로젝트 기획, 설계, 분석, 개발까지 웹 개발 사이클 경험, 동작 원리에 대한 이해
-
-      - layout: left
-        title: Konyang University
-        sub_title: Convergence IT
-        caption: 2015.03 - 2021.02
-        description: | # this will include new lines to allow paragraphs
-          융합 IT / 융합 디자인(복수전공) 학위 취득
-          * 알고리즘을 활용한 학교 주변 지역 관광지 네비게이션 개발 (수상)
-          <br/><br/><br/>
-
-  - title: A Little More About Me
-    layout: text
-    content: | # this will include new lines to allow paragraphs
-      수상 내역 :
-      * 2019.11 - 캡스톤 디자인 대회 3등 수상
-      * 2019.12 - ICT진흥 협회장상 수상 / 2019 ICT 융합공모전
-      
-      자격증 :
-      * 2019.11 - SQLD (SQL Developer)
-
-# Footer
-footer_show_references: true
-# references_title: References on request (Override references text)
+# social
+social:
+  email: true
+  behance:
+  bitbucket:
+  dribbble:
+  facebook: 96gllee 
+  flickr:
+  github: Jaekeun-Lee 
+  google_plus:
+  instagram: 96.glee
+  keybase:
+  linkedin:
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange:
+  steam:
+  tumblr:
+  gitlab:
+  twitter:
+  vimeo:
+  wordpress:
+  youtube:
+  default_txt: "Follow On"
 
 # Build settings
-remote_theme: sproogen/resume-theme
+markdown: kramdown
 
+# Assets
 sass:
   sass_dir: _sass
   style: compressed
 
+# Gems
 plugins:
- - jekyll-seo-tag
+  - jekyll-paginate
+
+# Permalinks
+permalink: /:year-:month-:day/:title
+paginate_path: "/portfolio/page:num/"
+paginate: 5
+exclude:
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "*.gem"
+  - "LICENSE"
+  - "READE.md"
+  - "screenshot.png"
+
+
+# # social
+# social:
+#   email: true
+#   behance:
+#   bitbucket:
+#   dribbble:
+#   facebook: Test
+#   flickr:
+#   github: kssim
+#   google_plus:
+#   instagram:
+#   keybase:
+#   linkedin: https://www.linkedin.com/in/kssim/ 
+
