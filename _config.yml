@@ -1,19 +1,21 @@
 # Site settings
-title: JaeKeun-Lee
+title: 이재근 | 서버 벡엔드 엔지니어
+nav_title: JaeKeun-Lee
 baseurl: 
 url: "https://jaekeun-lee.github.io/"
-google_analytics: # Tracking ID, e.g. "UA-000000-01"
+google_analytics: "G-KMV048VNRD"
+last_modified_at: 2024.03.13
 
 # Author
 author:
   name: JaeKeun Lee
-  desc: Java & Backend Junior Developer
+  desc: Backend Junior Developer
   email: ljg960730@naver.com
   selfie: assets/img/profile.jpg
 
 # social
 social:
-  email: true
+  재: true
   behance:
   bitbucket:
   dribbble:
@@ -35,6 +37,7 @@ social:
   vimeo:
   wordpress:
   youtube:
+  tistory: ljg960730
   default_txt: "Follow On"
 
 # Build settings
@@ -58,6 +61,6 @@ exclude:
   - "Gemfile.lock"
   - "*.gem"
   - "LICENSE"
-  - "READE.md"
+  - "README.md"
   - "screenshot.png"
 

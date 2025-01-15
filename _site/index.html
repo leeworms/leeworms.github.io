@@ -5,10 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>JaeKeun-Lee</title>
+  <title>이재근 | 서버 벡엔드 엔지니어</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/grid.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700">
   
   <!-- Font Awesome -->
@@ -16,23 +18,28 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico">
-
-  <style>
-      mark {
-        padding: 2px 4px;
-        font-size: 90%;
-        color: #fff;
-        background-color: #333;
-        border-radius: 3px;
-        -webkit-box-shadow: inset 0 -1px 0 rgb(0 0 0 / 25%);
-        box-shadow: inset 0 -1px 0 rgb(0 0 0 / 25%);
-      }
-  </style>
   <!-- Google Analytics -->
+  
+  <script>
+      (function(i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function() {
+              (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+              m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'G-KMV048VNRD', 'auto');
+      ga('send', 'pageview');
+
+  </script>
   
 
 </head>
-
 
   <body>
     <nav class="nav">
@@ -53,22 +60,13 @@
     <img class="selfie" alt="JaeKeun Lee" src="assets/img/profile.jpg" />
     <div class="info">
       <div class="title" style="font-family: Helvetica Neue, Segoe UI ,Helvetica,Arial,sans-serif;">JaeKeun Lee</div>
-      <div class="description" style="font-family: Helvetica Neue, Segoe UI ,Helvetica,Arial,sans-serif;">Java & Backend Junior Developer</div>
+      <div class="description" style="font-family: Helvetica Neue, Segoe UI ,Helvetica,Arial,sans-serif;">Backend Junior Developer</div>
     </div>
   </div>
   <div class="social-layer">
     <div class="social-icons">
       <ul>
         
-<li>
-  <a href="mailto:ljg960730@naver.com" title="email">
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-    </span>
-  </a>
-</li>
-
 
 
 
@@ -139,23 +137,415 @@
 
 
 
+
+<li>
+  <a href="https://ljg960730.tistory.com/" title="Follow On Tistory">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa custom-icon-tistory fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+
+
       </ul>
+    </div>
+    <div class="info">
+      <div class="title" style="font-family: Helvetica Neue, Segoe UI ,Helvetica,Arial,sans-serif;">
+        <span style="color: #777">Latest Updated</span>
+        <mark>
+          <span id="last">2024.03.13</span>
+          <span id="plus"></span>
+        </mark>
+      </div>
     </div>
   </div>
   <div class="content">
-    <h1 id="about-me">About Me</h1>
+    
+      
 
-<p>섬세한 개발자, 이재근입니다. <br /></p>
+      
+<h1 id="about-me">About Me</h1>
 
-<p>큰 임팩트는 혼자가 아닌 함께 만들 수 있다고 생각하기에 다양한 사람들과 적극적으로 커뮤니케이션하며 <mark>협업</mark>하는 것을 좋아합니다. 드러나지 않는 부분 변수가 생길 수 있는 부분 까지 생각하고, <mark>예상 가능한 좋은 코드</mark> 작성을 위해 노력합니다.</p>
+<p>Java &amp; Spring Framework를 주력으로 한 3년차 백엔드 개발자, 이재근입니다.</p>
 
-<p>새로운 기술 학습을 두려워하지 않으며, <mark>도전</mark>하고 잘못된 부분 개선할 부분을 인정하고 바로잡는 <mark>배움의 자세</mark>를 토대로 훌륭한 개발 역량뿐만 아니라 서비스를 이해하고 이끌어나갈 수 있는 개발자가 되는 것을 목표로 하고 있습니다.</p>
+<p>3년간의 경력 동안, 250만 명이 넘는 회원을 보유한 에듀테크 서비스에서 주요 <mark>회원 관리 도메인</mark>의 <mark>백엔드 개발</mark>을 담당해왔습니다.
+인증/인가 시스템과 회원 정보 관리 시스템의 개발 및 운영 경험을 바탕으로, 서비스의 안정성과 사용자 경험 향상에 기여해왔습니다.</p>
 
-<p><br /></p>
+<p>개발은 단순히 기술적 문제 해결을 넘어서 비즈니스 목표를 실현하는 과정이라고 생각합니다. 이에, 능동적이고 적극적인 협업을 중요시하며 문제 해결과 비즈니스 발전을 위해 뛰어듭니다.</p>
 
+<p>확장성과 유지 보수성이 높은 아키텍처 패턴에 관심이 많고, 변수를 사전에 예측하고 대응할 수 있는 유연하고 직관적인 코드 스타일을 추구합니다.
+단순히 기술적인 능력을 넘어 서비스 전반을 이해하고 이끌어 갈 수 있는 개발자로 성장하는 것을 목표로 하고 있습니다.</p>
+
+
+    
+      
+
+      
+<div class="col">
+  <h1> Experience
+    <span style="font-size:50%">
+      <input id="workStartDate" type="hidden" value="2021-09-27" />
+      <span id="totalWorkingPeriod" class="badge blue"></span>
+    </span>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="text-md-right col-sm-12 col-md-3">
+    <div class="row">
+      <div class="col-7 col-md-12">
+        <h2 style="color:gray">2021.09 ~</h2>
+      </div>
+      <div class="text-md-right text-center col-5 col-md-12">
+        
+        <span class="badge blue">재직 중</span>
+        
+        <span class="badge green">3년 1개월</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-9">
+    <h2>
+        이투스 교육 (Etoos)
+        <br />
+        <span style="font-size:70%; font-weight: lighter; color: #777777">- 온라인 교육 플랫폼</span>
+    </h2>
+    
+    <h4 style="font-weight: normal">G본부 - 플랫폼 비즈니스 개발실 ( 2023.03 ~, 현재 )</h4>
+    <ul class="exp pt-3">
+      
+        
+        <li>글로벌(한국, 인도) 플랫폼 "Matchnow" 서비스 오픈</li>
+        
+      
+        
+        <li>AI를 활용한 데이터 생성 및 결과물 데이터 관리 시스템 설계 및 개발</li>
+        
+      
+        
+        <li>매칭 및 예약 서비스 제공에 필요한 BFF 개발</li>
+        
+      
+        
+        <li>플랫폼(Web, Android, iOS) 대응 프론트 페이지 개발 및 유지보수</li>
+        
+      
+        
+        <li>html ↔ pdf 변환 기능을 제공하기 위한 마이크로 서비스 설계 및 개발</li>
+        
+      
+      <li class="skill">
+        <div>
+          
+          <span style="font-weight:400" class="badge grey">Java</span>
+          
+          <span style="font-weight:400" class="badge grey">Spring Boot</span>
+          
+          <span style="font-weight:400" class="badge grey">JPA</span>
+          
+          <span style="font-weight:400" class="badge grey">MySQL</span>
+          
+          <span style="font-weight:400" class="badge grey">Redis</span>
+          
+          <span style="font-weight:400" class="badge grey">Thymeleaf</span>
+          
+        </div>
+      </li>
+    </ul>
+    
+    <h4 style="font-weight: normal">플랫폼 개발실 - 통합 회원 개발팀 ( 2022.10 ~ 2023.03, 6개월 )</h4>
+    <ul class="exp pt-3">
+      
+        
+        <li>통합 회원 정보, 인증/인가 서비스 개발 및 운영</li>
+        
+      
+        
+        <li>7개의 교육 서비스의 계정 및 프로필 통합.</li>
+        
+      
+        
+        <li>OAuth 2.0 기반의 SSO 로그인 구현</li>
+        
+      
+        
+        <li>Redis를 활용하여 자주 조회되는 데이터에 대한 캐싱을 구현, 서버 부하를 줄이고 응답 시간을 단축시킴.</li>
+        
+      
+        
+        <li>Spring Batch를 활용한 휴면 회원, 탈퇴 회원 처리 프로세스 개발</li>
+        
+      
+        
+        <li>Spring Batch, Webhook 을 활용하여 회원 상태와 프로필 정보를 동기화.</li>
+        
+      
+      <li class="skill">
+        <div>
+          
+          <span style="font-weight:400" class="badge grey">Java 11</span>
+          
+          <span style="font-weight:400" class="badge grey">Spring Boot</span>
+          
+          <span style="font-weight:400" class="badge grey">MySQL</span>
+          
+          <span style="font-weight:400" class="badge grey">Redis</span>
+          
+        </div>
+      </li>
+    </ul>
+    
+    <h4 style="font-weight: normal">온라인 플랫폼 개발실 - 회원 개발팀, 통합 회원 개발팀 ( 2021.09 ~ 2023.02, 1년 5개월 )</h4>
+    <ul class="exp pt-3">
+      
+        
+        <li>통합 회원 프로젝트를 통해 7개의 교육 서비스 회원 통합</li>
+        
+      
+        
+        <li>통합 회원 정보, 인증/인가 서비스 개발 및 운영</li>
+        
+      
+        
+        <li>이투스 닷컴 회원 서비스 개발 및 운영</li>
+        
+      
+        
+        <li>Admin 인증/인가 서비스 개발 및 운영</li>
+        
+      
+        
+        <li>선착순 &amp; 추첨 이벤트 시스템 개발 및 운영</li>
+        
+      
+      <li class="skill">
+        <div>
+          
+          <span style="font-weight:400" class="badge grey">Java</span>
+          
+          <span style="font-weight:400" class="badge grey">Spring</span>
+          
+          <span style="font-weight:400" class="badge grey">Spring Boot</span>
+          
+          <span style="font-weight:400" class="badge grey">MyBatis</span>
+          
+          <span style="font-weight:400" class="badge grey">MSSQL</span>
+          
+          <span style="font-weight:400" class="badge grey">PostgreSQL</span>
+          
+          <span style="font-weight:400" class="badge grey">ASP</span>
+          
+          <span style="font-weight:400" class="badge grey">Vue.js</span>
+          
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+</div>
+
+<hr />
+
+
+    
+      
+
+      
+<div class="col">
+    <h1> Project</h1>
+</div>
+
+<div class="row">
+    <div class="text-md-right col-sm-12 col-md-3">
+        <div class="row">
+            <div class="col-7 col-md-12">
+                <h3 style="color:gray">2023.04 ~ 2023.08</h3>
+                <i style="color:gray"> 이투스 교육 (Etoos) <br /> - 회원 웹솔루션 개발팀</i>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-9">
+        <h2>
+            Matchnow Project
+        </h2>
+        <i style="color:gray; display: block"> 대학생 멘토와 입시생들을 연결하는 온라인 매칭 플랫폼.<br /> <br />한국과 인도 2개국 베타 버전 오픈 후 운영 및 추가 기능 개발.</i> <br />
+        
+        <div>
+            <span style="color:gray">
+                <span>- </span>
+                <span>Matchnow Korea</span>
+                <span> : </span>
+            </span>
+
+            <a href="https://www.matchnow.co.kr" target="_blank" style="color: #007bff;">https://www.matchnow.co.kr</a>
+        </div>
+        
+        <div>
+            <span style="color:gray">
+                <span>- </span>
+                <span>Matchnow India</span>
+                <span> : </span>
+            </span>
+
+            <a href="https://www.matchnow.in" target="_blank" style="color: #007bff;">https://www.matchnow.in</a>
+        </div>
+        
+
+        
+        <h4>주 담당업무</h4>
+        <ul class="exp pt-3">
+            
+            <li>매칭 서비스 제공에 필요한 BFF 개발</li>
+            
+            <li>플랫폼(Web, Android, iOS) 대응 프론트 페이지 개발 및 유지보수</li>
+            
+        </ul>
+        
+        <h4>담당업무 상세</h4>
+        <ul class="exp pt-3">
+            
+            <li>Quiz &amp; Poll 기능 개발</li>
+            
+            <li>상품 페이지, 이벤트 페이지 개발 및 유지보수</li>
+            
+            <li>회원 정보, 인증/인가 서비스 개발 및 운영</li>
+            
+            <li>통합 회원 프로젝트를 통해 7개의 교육 서비스 회원 통합</li>
+            
+            <li>글로벌(인도) 서비스 서비스 개발 및 운영</li>
+            
+            <li>Admin 프로젝트의 상담 신청서 관리 및 매칭 관리 페이지 및 API 구현</li>
+            
+            <li>이미지 ↔ pdf 변환 기능을 제공하기 위한 마이크로 서비스 설계 및 개발</li>
+            
+            <li>팀 내 서비스에서 공통으로 사용하는 메시징 서비스, 알림 서비스를 간단히 연동할 수 있도록 공통 모듈화 작업</li>
+            
+            <li>AWS SNS 메시지 발행을 위한 sns-publish-client 모듈, 메일과 SMS 전송을 위한 sender 모듈 2개의 공통 모듈을 구성하여 프로젝트 적용</li>
+            
+            <li>매칭 및 예약 서비스 제공에 필요한 BFF API 개발</li>
+            
+            <li>회원 관리(휴면, 탈퇴), 상품 관리(쿠폰) 비즈니스 로직을 포함한 프로시저를 REST API로 전환</li>
+            
+            <li>MSSQL 스케줄러를 통해 처리되던 프로시저를 Spring Batch로 전환</li>
+            
+        </ul>
+        
+
+        <div class="skill mb-3">
+            
+            <span style="font-weight:400" class="badge grey">Java</span>
+            
+            <span style="font-weight:400" class="badge grey">Spring Boot</span>
+            
+            <span style="font-weight:400" class="badge grey">JPA</span>
+            
+            <span style="font-weight:400" class="badge grey">Mybatis</span>
+            
+            <span style="font-weight:400" class="badge grey">MySQL</span>
+            
+            <span style="font-weight:400" class="badge grey">Redis</span>
+            
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="text-md-right col-sm-12 col-md-3">
+        <div class="row">
+            <div class="col-7 col-md-12">
+                <h3 style="color:gray">2023.04 ~ 2023.08</h3>
+                <i style="color:gray"> 이투스 교육 (Etoos) <br /> - 회원 웹솔루션 개발팀</i>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-9">
+        <h2>
+            Matchnow Project
+        </h2>
+        <i style="color:gray; display: block"> 대학생 멘토와 입시생들을 연결하는 온라인 매칭 플랫폼.</i> <br />
+        
+        <div>
+            <span style="color:gray">
+                <span>- </span>
+                <span>Matchnow India</span>
+                <span> : </span>
+            </span>
+
+            <a href="https://www.matchnow.in" target="_blank" style="color: #007bff;">https://www.matchnow.in</a>
+        </div>
+        
+
+        
+        <h4>주 담당업무</h4>
+        <ul class="exp pt-3">
+            
+            <li>회원 정보 관리 및 매칭 서비스 제공에 필요한 BFF 개발</li>
+            
+            <li>플랫폼(Web, Android, iOS) 대응 프론트 페이지 개발 및 유지보수</li>
+            
+        </ul>
+        
+        <h4>담당업무 상세</h4>
+        <ul class="exp pt-3">
+            
+            <li>서비스 운영에 필요한 페이지(상품, 이벤트 페이지) 개발 및 유지보수</li>
+            
+            <li><a href="https://docs.pagecall.com/introduction" target="_blank" style="color:#007bff;">Pagecall API</a>를 이용하여 실시간 Quiz &amp; Poll 기능 개발</li>
+            
+            <li>회원 정보, 인증/인가 서비스 개발 및 운영</li>
+            
+            <li>통합 회원 프로젝트를 통해 7개의 교육 서비스 회원 통합</li>
+            
+            <li>글로벌(인도) 서비스 서비스 개발 및 운영</li>
+            
+            <li>Admin 프로젝트의 상담 신청서 관리 및 매칭 관리 페이지 및 API 구현</li>
+            
+            <li>이미지 ↔ pdf 변환 기능을 제공하기 위한 마이크로 서비스 설계 및 개발</li>
+            
+            <li>팀 내 서비스에서 공통으로 사용하는 메시징 서비스, 알림 서비스를 간단히 연동할 수 있도록 공통 모듈화 작업</li>
+            
+            <li>AWS SNS 메시지 발행을 위한 sns-publish-client 모듈, 메일과 SMS 전송을 위한 sender 모듈 2개의 공통 모듈을 구성하여 프로젝트 적용</li>
+            
+            <li>매칭 및 예약 서비스 제공에 필요한 BFF API 개발</li>
+            
+            <li>회원 관리(휴면, 탈퇴), 상품 관리(쿠폰) 비즈니스 로직을 포함한 프로시저를 REST API로 전환</li>
+            
+            <li>MSSQL 스케줄러를 통해 처리되던 프로시저를 Spring Batch로 전환</li>
+            
+        </ul>
+        
+
+        <div class="skill mb-3">
+            
+            <span style="font-weight:400" class="badge grey">Java</span>
+            
+            <span style="font-weight:400" class="badge grey">Spring Boot</span>
+            
+            <span style="font-weight:400" class="badge grey">JPA</span>
+            
+            <span style="font-weight:400" class="badge grey">Mybatis</span>
+            
+            <span style="font-weight:400" class="badge grey">MySQL</span>
+            
+            <span style="font-weight:400" class="badge grey">Redis</span>
+            
+        </div>
+    </div>
+</div>
+
+<hr />
+
+
+    
+      
+
+      
 <h1 id="skill">Skill</h1>
 
 <h2 id="backend">Backend</h2>
+
 <ul>
   <li>Java, JSP</li>
   <li>Spring MVC, Spring Boot, Spring Security, Mybatis</li>
@@ -165,6 +555,7 @@
 </ul>
 
 <h2 id="frontend">Frontend</h2>
+
 <ul>
   <li>HTML5, CSS3</li>
   <li>Javascript</li>
@@ -172,6 +563,7 @@
 </ul>
 
 <h2 id="devops">DevOps</h2>
+
 <ul>
   <li>Oracle, MySQL</li>
   <li>TravisCI, AWS Code Deploy</li>
@@ -182,6 +574,7 @@
 <p><br /></p>
 
 <h1 id="education">Education</h1>
+
 <ul>
   <li><strong>Back-End Web development - BitCamp</strong> <em>(2020.09 - 2021.02)</em>
     <ul>
@@ -201,6 +594,7 @@
 <p><br /></p>
 
 <h1 id="awards">Awards</h1>
+
 <ul>
   <li><strong>Capstone Design Conference</strong> - 3rd place <em>(2019.11)</em></li>
   <li><strong>2019 ICT 융합공모전</strong> - ICT진흥 협회장상 수상 <em>(2019.11)</em></li>
@@ -209,21 +603,46 @@
 <p><br /></p>
 
 <h1 id="certificate">Certificate</h1>
+
 <ul>
   <li><strong>정보처리기사</strong> <em>(2021)</em></li>
   <li><strong>SQL Developer</strong> <em>(2020)</em></li>
 </ul>
 
-    </br>
+
     
+
+    </br>
   </div>
 </div>
 
+<script>
+
+  // last modified date
+  const lastUpdateDate = new Date(document.getElementById("last").innerHTML);
+  const now = new Date();
+  const differenceInTime = now.getTime() - lastUpdateDate.getTime();
+  const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+
+  document.getElementById("plus").innerHTML = `(D+${Math.round(differenceInDays)})`;
+
+
+  const workStartDate = new Date(document.getElementById("workStartDate").value);
+  let years = now.getFullYear() - workStartDate.getFullYear();
+
+  let months = now.getMonth() - workStartDate.getMonth();
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  document.getElementById("totalWorkingPeriod").innerHTML = `총 ${years}년 ${months}개월`;
+</script>
     </main>
 
     <footer>
       <span>
-        &copy; <time datetime="2021-08-01 20:27:34 +0900">2021</time> JaeKeun Lee. <a href="https://github.com/kssim/about-portfolio/">A.P</a> theme by kssim.
+        &copy; <time datetime="2025-01-15 03:53:03 +0900">2025</time> JaeKeun Lee. <a href="https://github.com/kssim/about-portfolio/">A.P</a> theme by kssim.
       </span>
     </footer>
   </body>

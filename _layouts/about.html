@@ -16,10 +16,48 @@ layout: base
         {% include icons.html %}
       </ul>
     </div>
+    <div class="info">
+      <div class="title" style="font-family: Helvetica Neue, Segoe UI ,Helvetica,Arial,sans-serif;">
+        <span style="color: #777">Latest Updated</span>
+        <mark>
+          <span id="last">{{ site.last_modified_at }}</span>
+          <span id="plus"></span>
+        </mark>
+      </div>
+    </div>
   </div>
   <div class="content">
-    {{ content }}
+    {% for path in page.include %}
+      {% capture var %}
+        {% include_relative {{path}} %}
+      {% endcapture %}
+
+      {{ var | markdownify }}
+    {% endfor %}
+
     </br>
-    
   </div>
 </div>
+
+<script>
+
+  // last modified date
+  const lastUpdateDate = new Date(document.getElementById("last").innerHTML);
+  const now = new Date();
+  const differenceInTime = now.getTime() - lastUpdateDate.getTime();
+  const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+
+  document.getElementById("plus").innerHTML = `(D+${Math.round(differenceInDays)})`;
+
+
+  const workStartDate = new Date(document.getElementById("workStartDate").value);
+  let years = now.getFullYear() - workStartDate.getFullYear();
+
+  let months = now.getMonth() - workStartDate.getMonth();
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  document.getElementById("totalWorkingPeriod").innerHTML = `총 ${years}년 ${months}개월`;
+</script>

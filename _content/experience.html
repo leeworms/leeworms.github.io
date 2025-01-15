@@ -1,0 +1,54 @@
+
+<div class="col">
+  <h1> Experience
+    <span style="font-size:50%">
+      <input id="workStartDate" type="hidden" value="{{ site.data.experience.workStartDate }}" />
+      <span id="totalWorkingPeriod" class="badge blue"></span>
+    </span>
+  </h1>
+</div>
+
+{% for c in site.data.experience.companies %}
+<div class="row">
+  <div class="text-md-right col-sm-12 col-md-3">
+    <div class="row">
+      <div class="col-7 col-md-12">
+        <h2 style="color:gray">{{ c.date }}</h2>
+      </div>
+      <div class="text-md-right text-center col-5 col-md-12">
+        {% if c.working %}
+        <span class="badge blue">재직 중</span>
+        {% endif %}
+        <span class="badge green">{{ c.working_period }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-9">
+    <h2>
+        {{ c.name }}
+        <br/>
+        <span style="font-size:70%; font-weight: lighter; color: #777777">- {{ c.desc }}</span>
+    </h2>
+    {% for t in c.team %}
+    <h4 style="font-weight: normal">{{ t.name }} - {{ t.position }} ( {{ t.date }}, {{ t.period }} )</h4>
+    <ul class="exp pt-3">
+      {% for d in t.doing %}
+        {% if d == "blank" %}
+        <li style="list-style: none; font-size: 0.5em;">&nbsp;</li>
+        {% else %}
+        <li>{{ d }}</li>
+        {% endif %}
+      {% endfor %}
+      <li class="skill">
+        <div>
+          {% for s in t.skill %}
+          <span style="font-weight:400" class="badge grey">{{ s }}</span>
+          {% endfor %}
+        </div>
+      </li>
+    </ul>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}
+<hr/>

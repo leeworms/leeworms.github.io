@@ -1,0 +1,60 @@
+workStartDate: 2021-09-27
+companies:
+  - name: 이투스 교육 (Etoos)
+    desc: 온라인 교육 플랫폼
+    working: true
+    date: 2021.09 ~
+    working_period: 3년 1개월
+    team:
+      - name: G본부
+        position: 플랫폼 비즈니스 개발실
+        date: 2023.03 ~
+        period: 현재
+        doing:
+          - 글로벌(한국, 인도) 플랫폼 "Matchnow" 서비스 오픈
+          - AI를 활용한 데이터 생성 및 결과물 데이터 관리 시스템 설계 및 개발
+          - 매칭 및 예약 서비스 제공에 필요한 BFF 개발
+          - 플랫폼(Web, Android, iOS) 대응 프론트 페이지 개발 및 유지보수
+          - html ↔ pdf 변환 기능을 제공하기 위한 마이크로 서비스 설계 및 개발
+        skill:
+          - Java
+          - Spring Boot
+          - JPA
+          - MySQL
+          - Redis
+          - Thymeleaf
+      - name: 플랫폼 개발실
+        position: 통합 회원 개발팀
+        date: 2022.10 ~ 2023.03
+        period: 6개월
+        doing:
+          - 통합 회원 정보, 인증/인가 서비스 개발 및 운영
+          - 7개의 교육 서비스의 계정 및 프로필 통합.
+          - OAuth 2.0 기반의 SSO 로그인 구현
+          - Redis를 활용하여 자주 조회되는 데이터에 대한 캐싱을 구현, 서버 부하를 줄이고 응답 시간을 단축시킴.
+          - Spring Batch를 활용한 휴면 회원, 탈퇴 회원 처리 프로세스 개발
+          - Spring Batch, Webhook 을 활용하여 회원 상태와 프로필 정보를 동기화.
+        skill:
+          - Java 11
+          - Spring Boot
+          - MySQL
+          - Redis
+      - name: 온라인 플랫폼 개발실
+        position: 회원 개발팀, 통합 회원 개발팀
+        date: 2021.09 ~ 2023.02
+        period: 1년 5개월
+        doing:
+          - 통합 회원 프로젝트를 통해 7개의 교육 서비스 회원 통합
+          - 통합 회원 정보, 인증/인가 서비스 개발 및 운영
+          - 이투스 닷컴 회원 서비스 개발 및 운영
+          - Admin 인증/인가 서비스 개발 및 운영
+          - 선착순 & 추첨 이벤트 시스템 개발 및 운영
+        skill:
+          - Java
+          - Spring
+          - Spring Boot
+          - MyBatis
+          - MSSQL
+          - PostgreSQL
+          - ASP
+          - Vue.js
