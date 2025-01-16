@@ -43,6 +43,22 @@ export function UndoIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+export function HomeIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <g fill="none" stroke="currentColor" strokeWidth="1">
+        <path d="M12 3l10 9h-3v9h-6v-6h-4v6H5v-9H2z" />
+      </g>
+    </svg>
+  );
+}
+
 // logo icons
 
 export function GithubIcon(props: SVGProps<SVGSVGElement>) {

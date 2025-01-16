@@ -65,7 +65,7 @@
     --md: 768px;
     --sm: 640px;
 
-    --page-top: 128px;
+    --page-top: 92px;
     --page-half-top: 64px;
     --page-width: 1072px;
     --content-width: 640px;
@@ -78,7 +78,7 @@
 
   @media (max-width: var(--lg)) {
     :root {
-      --page-top: 128px;
+      --page-top: 92px;
     }
   }
 
