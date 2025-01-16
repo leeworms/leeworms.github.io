@@ -21,32 +21,25 @@ const { props, url } = Astro;
 const currentNavItem = url.pathname.split('/').filter(Boolean).join('');
 
 const lang = props.lang ?? getLangFromUrl(url);
-const p = useTranslatedPath(lang);
 const t = useTranslations(lang);
 ---
 
 <div class={cn('flex items-center gap-2 font-serif text-sm', props.class)}>
-  <div>
-    <span>by</span>
-    <a class="link ml-0.5" href={p('/')}>
-      {t('index.name')}
-    </a>
-  </div>
-  <DotIcon className="h-2 w-2 text-second" />
   <div class="flex items-center gap-2">
     {
-      NAV.map((navItem) => (
-        <a
-          class={cn(
-            'external-link',
-            (navItem === currentNavItem ||
-              navItem === props.highlightNavItem) &&
-              'font-bold no-underline before:bg-selection before:ring-border hover:before:ring-1',
-          )}
-          href={p(`/${navItem}`)}
-        >
-          {t(`nav.${navItem}`)}
-        </a>
+      NAV.map((navItem, i) => (
+        <>
+          <a
+            class={cn(
+              'external-link',
+              (navItem === currentNavItem ||
+                navItem === props.highlightNavItem) &&
+                'font-bold no-underline before:bg-selection before:ring-border hover:before:ring-1',
+            )}
+            href={`/${navItem}`}>{t(`nav.${navItem}`)}
+          </a>
+          {i < NAV.length - 1 && <DotIcon className="h-2 w-2 text-second" />}
+        </>
       ))
     }
   </div>

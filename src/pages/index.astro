@@ -3,9 +3,9 @@ import BaseHeader from '~/components/base-header.astro';
 import {
   EmailIcon,
   GithubIcon,
-  MdiLinkedin,
+  FacebookIcon,
   NotionIcon,
-  TwitterXIcon,
+  InstagramIcon,
 } from '~/components/ui/icons';
 import { NAV } from '~/consts';
 import MainLayout from '~/layouts/main-layout.astro';
@@ -16,7 +16,7 @@ const { p, t } = useI18n(url);
 ---
 
 <MainLayout class="font-serif">
-  <BaseHeader title={`${t('index.name')} ﹒ bepyan`} />
+  <BaseHeader title={`${t('index.name')} ﹒ leeworms`} nav='none' />
   <div data-animate data-animate-speed="slow">
     {/* 소개 */}
     <div class="my-7" set:html={t('index.desc')} />
@@ -27,16 +27,16 @@ const { p, t } = useI18n(url);
       <div data-animate class="mt-1 flex gap-0.5">
         <a
           style="--lv-wait: 1;"
-          class="rounded p-1 transition-colors hover:bg-selection hover:text-body"
-          href="mailto:bepyan@naver.com"
+          class="rounded p-2 transition-colors hover:bg-selection hover:text-body"
+          href="mailto:ljg960730@naver.com"
           aria-label="email"
         >
           <EmailIcon />
         </a>
         <a
           style="--lv-wait: 1;"
-          class="rounded p-1 transition-colors hover:bg-selection hover:text-body"
-          href="https://github.com/bepyan"
+          class="rounded p-2 transition-colors hover:bg-selection hover:text-body"
+          href="https://github.com/leeworms"
           target="_blank"
           aria-label="github"
         >
@@ -44,30 +44,20 @@ const { p, t } = useI18n(url);
         </a>
         <a
           style="--lv-wait: 1;"
-          class="rounded p-1 transition-colors hover:bg-selection hover:text-body"
-          href="https://twitter.com/__pyungan"
+          class="rounded p-2 transition-colors hover:bg-selection hover:text-body"
+          href="https://www.instagram.com/96.glee"
           target="_blank"
           aria-label="twitter"
         >
-          <TwitterXIcon />
+          <InstagramIcon />
         </a>
         <a
           style="--lv-wait: 1;"
-          class="rounded p-1 transition-colors hover:bg-selection hover:text-body"
-          href="https://www.linkedin.com/in/pyungan-kim-4aa869291/"
+          class="rounded p-2 transition-colors hover:bg-selection hover:text-body"
+          href="https://www.facebook.com/96gllee"
           aria-label="linkedin"
         >
-          <MdiLinkedin />
-        </a>
-        <a
-          style="--lv-wait: 1;"
-          class="flex items-center gap-1 rounded p-1 transition-colors hover:bg-selection hover:text-body"
-          href="https://bepyan.notion.site/Frontend-Developer-69fd245161734c1793e8df78dffe705c?pvs=4"
-          target="_blank"
-          aria-label="resume"
-        >
-          <NotionIcon />
-          <span class="text-xs leading-tight">resume</span>
+          <FacebookIcon />
         </a>
       </div>
     </div>

@@ -141,16 +141,16 @@ function CloseButton() {
         <path
           d="M10.4854 1.99998L2.00007 10.4853"
           stroke="currentColor"
-          stroke-width="3"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></path>
         <path
           d="M10.4854 10.4844L2.00007 1.99908"
           stroke="currentColor"
-          stroke-width="3"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></path>
       </svg>
     </button>
