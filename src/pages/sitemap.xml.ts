@@ -4,7 +4,7 @@ export async function GET() {
   const siteUrl = import.meta.env.SITE;
   const posts = await getPostInfoList('all');
 
-  const renderUrl = (slug: string, hasEn = true) => {
+  const renderUrl = (slug: string, hasEn = false) => {
     let result = `<url><loc>${siteUrl}${slug}</loc></url>`;
 
     if (hasEn) {
@@ -20,12 +20,10 @@ export async function GET() {
     ${renderUrl('/')}
     ${renderUrl('/writing')}
     ${renderUrl('/note')} 
-    ${renderUrl('/craft')}
     ${posts
       .map((post) => {
-        const langPrefix = post.lang === 'ko' ? '' : `/${post.lang}`;
         const lastMod = (post.updatedDate ?? post.date).toISOString();
-        const slug = `${langPrefix}${post.href}`;
+        const slug = `${post.href}`;
         return `<url><loc>${siteUrl}${slug}/</loc><lastmod>${lastMod}</lastmod></url>`;
       })
       .join('\n')}

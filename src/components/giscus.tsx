@@ -31,14 +31,13 @@ export const GiscusSection = (
 ) => {
   useEffect(() => {
     const theme: keyof typeof giscusThemes =
-      document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-
+        document.documentElement.classList.contains('dark') ? 'dark' : 'light';
     const giscusAttributes = {
       src: 'https://giscus.app/client.js',
-      'data-repo': 'bepyan/bepyan.me.v2',
-      'data-repo-id': 'R_kgDOKUQR3A',
-      'data-category': 'General',
-      'data-category-id': 'DIC_kwDOKUQR3M4CbE1x',
+      'data-repo': 'leeworms/leeworms.github.io',
+      'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzNTE5Mzc3NDU=',
+      'data-category': 'Comments',
+      'data-category-id': 'DIC_kwDOFPok0c4Cmdvd',
       'data-mapping': 'pathname',
       'data-strict': '0',
       'data-reactions-enabled': '1',
@@ -52,12 +51,12 @@ export const GiscusSection = (
 
     const giscusScript = document.createElement('script');
     Object.entries(giscusAttributes).forEach(([key, value]) =>
-      giscusScript.setAttribute(key, value),
+        giscusScript.setAttribute(key, value),
     );
     document.querySelector('#giscus')?.appendChild(giscusScript);
   }, []);
 
   return (
-    <section {...props} style={{ minHeight: '372px' }} id="giscus"></section>
+      <section {...props} style={{minHeight: '372px'}} id="giscus"></section>
   );
 };

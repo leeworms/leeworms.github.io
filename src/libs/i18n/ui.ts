@@ -12,10 +12,10 @@ export const ui = {
     '404.desc': '관련된 문서를 찾을 수 없습니다.',
 
     'nav.title': '나의 창고',
-    'nav.writing': '에러.log',
-    'nav.writing.desc': '내가 만났던 에러들을 보관하는 공간',
-    'nav.note': '끄적.log',
-    'nav.note.desc': '유용한 지식을 보관하는 공간',
+    'nav.writing': '끄적.log',
+    'nav.writing.desc': '유용한 지식을 보관하는 공간',
+    'nav.note': '에러.log',
+    'nav.note.desc': '내가 만났던 에러들을 보관하는 공간',
 
     'index.name': '이재근',
     'index.desc':
@@ -31,10 +31,10 @@ export const ui = {
     '404.desc': '관련된 문서를 찾을 수 없습니다.',
 
     'nav.title': '나의 창고',
-    'nav.writing': '에러.log',
-    'nav.writing.desc': '내가 만났던 에러들을 보관하는 공간',
-    'nav.note': '끄적.log',
-    'nav.note.desc': '유용한 지식을 보관하는 공간',
+    'nav.writing': '끄적.log',
+    'nav.writing.desc': '유용한 지식을 보관하는 공간',
+    'nav.note': '에러.log',
+    'nav.note.desc': '내가 만났던 에러들을 보관하는 공간',
 
     'index.name': '이재근',
     'index.desc':
