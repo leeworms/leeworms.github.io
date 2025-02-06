@@ -33,14 +33,14 @@ export type Props = {
 const { lang, post, prevPost, nextPost, relatedPostList, noI18n } = Astro.props;
 
 const postType = getPostType(post);
-const { title, date } = post.data;
+const { title, date, image } = post.data;
 const description = post.data.description || contentToDescription(post.body);
 const toc = parseToc(post.body);
 
 const { Content } = await post.render();
 ---
 
-<MainLayout pagefind seo={{ title, description }}>
+<MainLayout pagefind seo={{ title, description, image }}>
   <BaseLeftAside>
     <TableOfContent
       data-animate

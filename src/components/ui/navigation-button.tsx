@@ -10,7 +10,12 @@ export default function NavigationButton({
     if (iconType === 'home') {
       window.location.href = '/'; // 홈으로 이동
     } else if (iconType === 'back') {
-      window.history.back(); // 뒤로 가기
+      const activeLink = document.querySelector('a.current-active-menu-link-tab') as HTMLAnchorElement;
+      if (activeLink) {
+        window.location.href = activeLink.href; // 해당 링크로 이동
+      } else {
+        window.history.back(); // 활성화된 링크가 없으면 뒤로 가기
+      }
     }
   };
 

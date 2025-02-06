@@ -4,7 +4,7 @@ import {
   EmailIcon,
   GithubIcon,
   FacebookIcon,
-  NotionIcon,
+  TistoryIcon,
   InstagramIcon,
 } from '~/components/ui/icons';
 import { NAV } from '~/consts';
@@ -47,7 +47,7 @@ const { p, t } = useI18n(url);
           class="rounded p-2 transition-colors hover:bg-selection hover:text-body"
           href="https://www.instagram.com/96.glee"
           target="_blank"
-          aria-label="twitter"
+          aria-label="instagram"
         >
           <InstagramIcon />
         </a>
@@ -55,9 +55,19 @@ const { p, t } = useI18n(url);
           style="--lv-wait: 1;"
           class="rounded p-2 transition-colors hover:bg-selection hover:text-body"
           href="https://www.facebook.com/96gllee"
-          aria-label="linkedin"
+          target="_blank"
+          aria-label="facebook"
         >
           <FacebookIcon />
+        </a>
+        <a
+          style="--lv-wait: 1;"
+          class="rounded p-2 transition-colors hover:bg-selection hover:text-body"
+          href="https://ljg960730.tistory.com"
+          target="_blank"
+          aria-label="tistory"
+        >
+          <TistoryIcon />
         </a>
       </div>
     </div>

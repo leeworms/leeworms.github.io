@@ -34,7 +34,7 @@ const t = useTranslations(lang);
               'external-link',
               (navItem === currentNavItem ||
                 navItem === props.highlightNavItem) &&
-                'font-bold no-underline before:bg-selection before:ring-border hover:before:ring-1',
+                'font-bold no-underline before:bg-selection before:ring-border hover:before:ring-1 current-active-menu-link-tab',
             )}
             href={`/${navItem}`}>{t(`nav.${navItem}`)}
           </a>

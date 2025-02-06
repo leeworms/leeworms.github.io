@@ -24,7 +24,7 @@ export const ui = {
         `<p>꾸준히 성장할 수 있도록 기록을 통한 저장 창고을 만들어보려고 합니다.</p>`,
     'index.currentWork': `<p>현재 에듀테크 플랫폼 <b><a class="external-link" href="https://www.etoos.com" target="_blank">이투스</a></b>에서 회원 도메인 백엔드를 개발하고 있습니다.</p>`,
 
-    'footer.copyright': 'bepyan',
+    'footer.copyright': 'bepyan.me.v2',
     'footer.copyright-url': 'https://github.com/bepyan/bepyan.me.v2',
   },
   ko: {
@@ -43,7 +43,7 @@ export const ui = {
       `<p>꾸준히 성장할 수 있도록 기록을 통한 저장 창고을 만들어보려고 합니다.</p>`,
     'index.currentWork': `<p>현재 에듀테크 플랫폼 <b><a class="external-link" href="https://www.etoos.com" target="_blank">이투스</a></b>에서 회원 도메인 백엔드를 개발하고 있습니다.</p>`,
 
-    'footer.copyright': 'bepyan',
+    'footer.copyright': 'bepyan.me.v2',
     'footer.copyright-url': 'https://github.com/bepyan/bepyan.me.v2',
   }
 } satisfies Record<Language, { [key: string]: string }>;
