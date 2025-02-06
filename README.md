@@ -2,7 +2,7 @@
 
 https://leeworms.github.io/
 
-![Custom Home](/public/img/new-blog/record-home.webp)
+![Custom Home](/public/img/new-blog/record-home.gif)
 
 
 
