@@ -1,0 +1,362 @@
+---
+title: '숏츠 서비스에서 HLS 스트리밍 구현하기'
+description: 'AWS MediaConvert와 HLS.js를 활용하여 자동화된 영상 인코딩 파이프라인부터 최적화된 스트리밍 서비스까지, 숏츠 서비스의 개발 과정을 공유합니다.'
+date: 2025-03-20 00:00:00
+draft: false
+tags:
+  - HLS
+  - AWS
+  - MediaConvert
+  - Video Streaming
+  - Frontend
+  - Performance
+---
+
+요즘 숏츠 영상이 대세잖아요?
+회사에서 숏츠 서비스를 만들게 되었는데, 저는 그 중에서도 HLS 스트리밍 부분을 담당하게 되었습니다.
+영상 업로드는 다른 팀에서, 인코딩은 동료와 함께 진행했고, 저는 주로 S3에 올라온 영상을 사용자에게 매끄럽게 스트리밍하는 부분에 집중했어요.
+생각보다 까다로운 작업이었는데, 그 과정에서 배운 것들을 정리해봤습니다.
+
+## 기술 스택
+
+**Backend Infrastructure**
+- **Video Processing**: AWS MediaConvert
+- **Storage**: Amazon S3
+- **CDN**: Amazon CloudFront
+- **Event Processing**: AWS Lambda, EventBridge
+- **Backend**: Spring Boot
+
+**Frontend**
+- **Template Engine**: Thymeleaf
+- **Video Streaming**: HLS.js
+- **UI Framework**: Splide.js
+- **Language**: JavaScript ES6+
+
+
+### HLS 인코딩 자동화 파이프라인
+
+업로드된 영상을 자동으로 HLS 포맷으로 바꿔주는 완전 자동화 시스템이에요.
+사용자가 영상만 올리면 알아서 다양한 해상도로 변환해서 스트리밍 파일을 만들어줘요.
+
+![](/img/hls/transcode-flow.png)
+
+영상 업로드부터 스트리밍까지의 전체 플로우는 이런 식이에요:
+
+1. **숏츠 영상 업로드** → S3 Bucket 저장
+2. **Lambda Trigger** → 업로드 이벤트 감지
+3. **EventBridge Job State Change** → 작업 상태 관리
+4. **MediaConvert Transcode** → MP4를 HLS로 변환
+5. **Multi-Resolution Output** → 480p, 720p, 1080p 생성
+6. **CloudFront CDN** → 컨텐츠 캐싱
+7. **웹 서비스 스트리밍** → 최종 사용자 제공
+
+#### 업로드 트리거
+
+S3 버킷에 영상이 올라오면 자동으로 Lambda 함수가 실행되어서 MediaConvert 작업을 시작해요.
+이벤트 기반으로 돌아가니까 실시간으로 처리가 가능하더라고요.
+
+```javascript
+// S3 업로드 완료 시 Lambda 함수 트리거
+const handleVideoUpload = async (event) => {
+    const bucket = event.Records[0].s3.bucket.name;
+    const key = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, ' '));
+
+    // MediaConvert 작업 생성
+    const jobParams = {
+        Role: process.env.MEDIACONVERT_ROLE,
+        Settings: {
+            Inputs: [{
+                FileInput: `s3://${bucket}/${key}`,
+                VideoSelector: {},
+                AudioSelectors: {
+                    "Audio Selector 1": {
+                        DefaultSelection: "DEFAULT"
+                    }
+                }
+            }],
+            OutputGroups: generateHLSOutputGroups(key)
+        }
+    };
+
+    await mediaConvert.createJob(jobParams).promise();
+};
+```
+
+## 프론트엔드 구현
+
+### HLS 스트리밍 설정
+
+HLS.js 라이브러리의 최적화된 설정값들이에요.
+빠른 시작과 안정적인 재생을 위해서 버퍼 크기랑 로딩 전략을 이것저것 테스트해보면서 조정했어요.
+
+```javascript
+// HLS.js 최적화 설정
+// 참고: https://github.com/video-dev/hls.js/blob/master/docs/API.md#fine-tuning
+const HLS_DEFAULT_OPTION = {
+    autoStartLoad: true,           // 자동으로 세그먼트 로딩 시작
+    startPosition: 0,              // 재생 시작 위치 (초)
+    startFragPrefetch: true,       // 첫 번째 세그먼트 미리 가져오기
+    maxBufferLength: 5,            // 최대 버퍼 길이 (초) - 메모리 사용량 제어
+    maxBufferSize: 50 * 1000,      // 최대 버퍼 크기 (바이트) - 50KB
+    maxMaxBufferLength: 3,         // 버퍼 길이 상한선 (초)
+    maxBufferHole: 0.1,            // 버퍼 홀 허용 크기 (초)
+    lowLatencyMode: true,          // 저지연 모드 활성화
+    initialLiveManifestSize: 1,    // 초기 라이브 매니페스트 크기
+    autoLevelEnabled: true,        // 자동 품질 조정 활성화
+    startLevel: 1
+};
+```
+
+### 동적 비디오 로딩
+
+브라우저 호환성을 고려한 비디오 로딩 로직이에요. HLS를 지원하지 않는 브라우저에서는 그냥 네이티브 비디오 재생으로 자동 전환되도록 했어요.
+
+```javascript
+const loadHls = () => {
+    return new Promise((resolve) => {
+        if (Hls.isSupported()) {
+            hls.stopLoad();
+            hls.loadSource(url);
+            hls.attachMedia(shortsVideo);
+            hls.startLoad(0);
+
+            shortsVideo.onloadedmetadata = () => {
+                resolve();
+            };
+        } else {
+            shortsVideo.src = url;
+            resolve();
+        }
+    });
+};
+```
+
+## 핵심 기능
+
+숏츠 플랫폼에서 사용자 경험을 좌우하는 핵심 기능들이에요. 무한 스크롤, 다양한 입력 방식, 그리고 자동 음소거 기능으로 직관적이고 편리하게 쓸 수 있도록 만들었어요.
+
+### 1. 무한 스크롤
+
+사용자가 마지막 영상에 도달하면 자동으로 다음 페이지 콘텐츠를 가져와요. 끊김 없이 계속 볼 수 있도록 해줘요.
+
+```javascript
+const isLastSlide = newIndex === (this.splide.length - 1);
+if (isLastSlide && (!this.isLastPage || this.allCategoryMode)) {
+    await this.setSlides();
+}
+```
+
+### 2. 다양한 입력 방식 지원
+
+키보드 화살표, 마우스 휠, 터치 제스처 등등 여러 방식으로 영상을 넘길 수 있어요. 사용자가 편한 방식으로 자연스럽게 조작할 수 있도록 했어요.
+
+```javascript
+// 키보드, 마우스 휠, 터치 제스처 통합 지원
+document.addEventListener('keydown', this.handleKeydown.bind(this));
+document.addEventListener('wheel', this.handleWheel);
+this.shortsList.addEventListener('touchstart', this.handleDragStart.bind(this));
+this.shortsList.addEventListener('touchend', this.handleDragEnd.bind(this));
+```
+
+### 3. 음소거
+
+브라우저의 자동재생 정책 때문에 초기에는 음소거 상태로 재생을 시작해요. 특히 Chrome의 경우 사용자가 뭔가 클릭하기 전까지는 소리가 있는 영상을 자동재생할 수 없어서 꽤 애를 먹었어요. 결국 음소거로 시작해서 사용자가 클릭하면 소리를 켜는 방식으로 해결했어요.
+
+```javascript
+playVideo(isMuted, biReq = true) {
+    shortsVideo.muted = isMuted;
+    if (isMuted) {
+        shortsVideo.play().catch((e) => {
+            console.log('play error', e);
+        });
+    } else {
+        shortsVideo.play()
+            .then(() => {
+                shortsAudio.classList.remove('muted');
+            })
+            .catch(() => {
+                shortsVideo.muted = true;
+                shortsVideo.play();
+                shortsAudio.classList.add('muted');
+            });
+    }
+}
+```
+
+## 성능 최적화 및 문제 해결
+사용자들한테서 "첫 로딩이랑 비디오 넘길 때 너무 느리다"는 피드백을 받아서 다음과 같은 최적화 작업을 진행했어요. 특히 인도 쪽 서비스를 하다 보니 네트워크 환경이 한국보다 불안정해서 더 신경 써야 했어요.
+
+**1. 초기 로딩 속도 개선**
+
+사용자 피드백을 바탕으로 첫 로딩 시간을 확 줄여본 최적화 방법들이에요. 인도 지역의 느린 네트워크 환경을 고려해서 썸네일을 먼저 보여주고 네트워크 상황에 맞춰서 적응형 로딩을 구현했어요.
+
+썸네일 우선 렌더링
+```javascript
+const optimizeInitialLoading = (file) => {
+    let thumbnail = file[0].thumbnail;
+    if (CommonUtil.checkUndefinedText(thumbnail)) {
+        const shortsLink = file[0].encoded_url;
+        thumbnail = shortsLink.substring(0, shortsLink.lastIndexOf('/') + 1) + THUMBNAIL_FILE_NAME;
+    }
+
+    // 썸네일을 먼저 보여줘서 바로 시각적 피드백을 제공해요
+    // 실제 로딩 시간은 줄지 않지만 UX적으로 빨라 보이는 효과가 있어요
+    const videoElement = document.querySelector('.shorts-video');
+    videoElement.poster = thumbnail;
+
+    // 백그라운드에서 비디오를 로드해요
+    setTimeout(() => {
+        loadHls();
+    }, 100);
+};
+```
+
+네트워크 기반 HLS 로딩
+
+```javascript
+const adaptiveInitialLoading = () => {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+
+    if (connection) {
+        let initialLevel = 1;
+
+        // 네트워크 타입에 따라서 초기 품질을 설정해요
+        // 인도 지역의 3G 환경을 고려해서 더 보수적으로 설정
+        switch(connection.effectiveType) {
+            case 'slow-2g':
+            case '2g':
+                initialLevel = 0; // 480p
+                break;
+            case '3g':
+                initialLevel = 0; // 인도 3G는 480p로 시작
+                break;
+            case '4g':
+                initialLevel = 1; // 720p
+                break;
+            default:
+                initialLevel = 0; // 안전하게 480p로 시작
+        }
+
+        HLS_DEFAULT_OPTION.startLevel = initialLevel;
+
+        // 대역폭에 따라서 버퍼를 최적화해요
+        // 인도 네트워크 환경에 맞춰 버퍼 크기 조정
+        if (connection.downlink) {
+            if (connection.downlink < 1.5) {
+                HLS_DEFAULT_OPTION.maxBufferLength = 2; // 더 작은 버퍼
+            } else if (connection.downlink > 10) {
+                HLS_DEFAULT_OPTION.maxBufferLength = 6; // 보수적 버퍼
+            }
+        }
+    }
+
+    HLS_DEFAULT_OPTION.autoLevelEnabled = true;
+};
+```
+
+### 2. 프리로딩
+다음 영상을 미리 로드해서 사용자가 스크롤할 때 바로 재생할 수 있도록 했어요. 끊김 없이 연속으로 볼 수 있어요.
+```javascript
+const preloadNextVideo = () => {
+    const nextIndex = this.activeIndex + 1;
+    if (nextIndex < this.posts.length) {
+        const nextVideoUrl = this.posts[nextIndex].file[0].encoded_url;
+
+        const preloadVideo = document.createElement('video');
+        preloadVideo.preload = 'metadata';
+        preloadVideo.src = nextVideoUrl;
+
+        preloadVideo.addEventListener('loadedmetadata', () => {
+            this.preloadedVideos[nextIndex] = preloadVideo;
+        });
+    }
+};
+```
+
+### 3. 메모리 관리
+오래 쓰다 보면 생길 수 있는 메모리 누수를 방지해요. 안 쓰는 비디오 리소스들을 정리해서 계속 안정적으로 돌아가도록 했어요.
+```javascript
+const cleanupVideoResources = () => {
+    if (hls) {
+        hls.stopLoad();
+        hls.detachMedia();
+        hls.destroy();
+        hls = null;
+    }
+
+    if (shortsVideo) {
+        shortsVideo.pause();
+        shortsVideo.removeAttribute('src');
+        shortsVideo.load();
+    }
+
+    Object.keys(this.preloadedVideos).forEach(key => {
+        const video = this.preloadedVideos[key];
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
+        delete this.preloadedVideos[key];
+    });
+};
+
+window.addEventListener('beforeunload', cleanupVideoResources);
+```
+
+
+
+## 분석 및 모니터링
+
+**BI 데이터 수집**
+
+사용자가 영상을 어떻게 보는지, 얼마나 오래 보는지, 어디서 나가는지 등등을 상세하게 추적해요. 이 데이터로 콘텐츠 추천 알고리즘이랑 UX 개선에 활용하고 있어요.
+
+```javascript
+sendBiData(status, idx = this.activeIndex, isLeave = false, leaveAction = '') {
+    if (status === 'start') {
+        this.bi_start_time_obj = {
+            id: this.posts[this.activeIndex].post_id,
+            start_time: new Date().getTime()
+        };
+    }
+
+    biAssistance.sendShortFormBiData({
+        status: status,
+        duration: this.bi_total_play_time,
+        current_play_time: this.bi_video_current_time,
+        element_id_number: idx + 1,
+        start_time_stamp: this.bi_start_time_obj.start_time,
+        is_leave: isLeave,
+        leave_action: leaveAction,
+        is_mobile: Config.instance.DEVICE.isMobile
+    }, this.posts[idx]);
+}
+```
+
+
+### 최적화 전후 비교
+
+성능 최적화 작업의 정량적 결과에요. 로딩 시간, 버퍼링, 사용자 참여도 등 핵심 지표에서 꽤 괜찮은 개선을 이뤄냈어요.
+
+| 지표        | 초기 버전 | 개선 버전 | 개선율        |
+| --------- | ----- | ----- | ---------- |
+| 평균 로딩 시간  | 2.1초  | 0.3초  | 85% 개선     |
+| 버퍼링 발생률   | 4.8%  | 1.2%  | 75% 감소     |
+| 사용자 체류 시간 | +40%  | +78%  | 38%p 추가 증가 |
+| 완주율       | 65%   | 82%   | 17%p 증가    |
+
+### 사용자 경험 개선
+
+기술적 최적화가 실제 사용자 경험에 미친 좋은 영향들이에요.
+빠른 로딩과 안정적인 재생으로 사용자 만족도가 많이 올라갔어요.
+
+- **즉시 재생**: 썸네일 우선 렌더링으로 체감 로딩 시간 단축
+- **끊김 없는 재생**: 적응형 품질 조절로 네트워크 변화에 대응
+- **부드러운 전환**: 프리로딩으로 다음 영상 즉시 재생
+- **안정적인 성능**: 메모리 누수 방지로 장시간 사용 가능
+
+## 맺으면서
+
+이번 프로젝트를 통해 영상 스트리밍이 생각보다 복잡한 영역이라는 걸 깨달았습니다.
+단순히 영상을 재생하는 것 같지만, 네트워크 상황, 브라우저 정책, 사용자 경험까지 고려해야 할 요소가 정말 많더라고요.
+
+특히 사용자들의 "느리다"는 피드백을 받고 최적화 작업을 진행하면서, 개발자 환경에서는 괜찮아 보이던 것들이 실제 사용자 환경에서는 전혀 다를 수 있다는 점을 다시 한번 느꼈습니다. 앞으로는 성능 지표를 더 꼼꼼히 모니터링하고, 사용자 피드백에 더 귀 기울여야겠다는 생각이 듭니다.
