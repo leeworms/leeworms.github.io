@@ -1,0 +1,92 @@
+---
+export interface Props {
+  type: 'website' | 'article' | 'person';
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+  datePublished?: string;
+  dateModified?: string;
+  author?: string;
+}
+
+const { 
+  type, 
+  title, 
+  description, 
+  url, 
+  image, 
+  datePublished, 
+  dateModified, 
+  author 
+} = Astro.props;
+
+const baseUrl = 'https://leeworms.github.io';
+
+const getStructuredData = () => {
+  const baseData = {
+    "@context": "https://schema.org",
+    "@type": type === 'website' ? 'WebSite' : type === 'article' ? 'BlogPosting' : 'Person',
+  };
+
+  if (type === 'website') {
+    return {
+      ...baseData,
+      name: title || 'leeworms',
+      description: description,
+      url: url || baseUrl,
+      author: {
+        "@type": "Person",
+        name: "이재근",
+        url: baseUrl
+      }
+    };
+  }
+
+  if (type === 'article') {
+    return {
+      ...baseData,
+      headline: title,
+      description: description,
+      url: url,
+      image: image,
+      datePublished: datePublished,
+      dateModified: dateModified || datePublished,
+      author: {
+        "@type": "Person",
+        name: author || "이재근",
+        url: baseUrl
+      },
+      publisher: {
+        "@type": "Person",
+        name: "이재근",
+        url: baseUrl
+      }
+    };
+  }
+
+  if (type === 'person') {
+    return {
+      ...baseData,
+      name: "이재근",
+      alternateName: "leeworms",
+      description: "백엔드 개발자",
+      url: baseUrl,
+      sameAs: [
+        "https://github.com/leeworms",
+        "https://www.instagram.com/96.glee",
+        "https://ljg960730.tistory.com"
+      ],
+      jobTitle: "Backend Developer",
+      worksFor: {
+        "@type": "Organization",
+        name: "이투스"
+      }
+    };
+  }
+
+  return baseData;
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(getStructuredData())} />

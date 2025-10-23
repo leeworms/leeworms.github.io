@@ -3,22 +3,33 @@ import '~/styles/global.css';
 import '~/styles/animation.css';
 
 import { SITE } from '~/consts';
+import { optimizeTitle, optimizeDescription, generateKeywords } from '~/libs/seo';
 import { type SEOProps } from '~/types';
 
 import BaseFonts from './base-fonts.astro';
+import StructuredData from './seo/structured-data.astro';
 
-type Props = SEOProps & {};
+type Props = SEOProps & {
+  structuredData?: {
+    type: 'website' | 'article' | 'person';
+    datePublished?: string;
+    dateModified?: string;
+    author?: string;
+  };
+  tags?: string[];
+};
 
 const { props } = Astro;
 
-const title =
-  props.title && SITE.titleTemplate
-    ? SITE.titleTemplate.replace('%s', props.title)
-    : SITE.title;
-const description = props.description ?? SITE.description;
+const rawTitle = props.title && SITE.titleTemplate
+  ? SITE.titleTemplate.replace('%s', props.title)
+  : SITE.title;
+
+const title = optimizeTitle(rawTitle);
+const description = optimizeDescription(props.description ?? SITE.description);
+const keywords = props.tags ? generateKeywords(props.tags, rawTitle) : '백엔드 개발자, 이재근, leeworms, 개발 블로그, Spring Boot, Java, Kotlin';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const imageURL = props.image ?? SITE.image;
 ---
 
@@ -27,6 +38,13 @@ const imageURL = props.image ?? SITE.image;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+
+<!-- SEO Meta Tags -->
+<meta name="robots" content="index, follow" />
+<meta name="author" content="이재근" />
+<meta name="keywords" content={keywords} />
+<meta name="language" content="ko" />
+
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
@@ -41,6 +59,10 @@ const imageURL = props.image ?? SITE.image;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageURL} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="ko_KR" />
+<meta property="og:site_name" content="leeworms" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -48,6 +70,7 @@ const imageURL = props.image ?? SITE.image;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={imageURL} />
+<meta property="twitter:creator" content="@leeworms" />
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap.xml" />
@@ -56,6 +79,18 @@ const imageURL = props.image ?? SITE.image;
   type="application/rss+xml"
   title={SITE.title}
   href="/rss.xml"
+/>
+
+<!-- Structured Data -->
+<StructuredData
+  type={props.structuredData?.type || 'website'}
+  title={title}
+  description={description}
+  url={canonicalURL.toString()}
+  image={imageURL}
+  datePublished={props.structuredData?.datePublished}
+  dateModified={props.structuredData?.dateModified}
+  author={props.structuredData?.author}
 />
 
 <!-- Fonts -->
