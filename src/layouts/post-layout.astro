@@ -40,7 +40,21 @@ const toc = parseToc(post.body);
 const { Content } = await post.render();
 ---
 
-<MainLayout pagefind seo={{ title, description, image }}>
+<MainLayout 
+  pagefind 
+  seo={{ 
+    title, 
+    description, 
+    image,
+    tags: post.data.tags,
+    structuredData: {
+      type: 'article',
+      datePublished: date.toISOString(),
+      dateModified: post.data.lastmod?.toISOString() || date.toISOString(),
+      author: '이재근'
+    }
+  }}
+>
   <BaseLeftAside>
     <TableOfContent
       data-animate
