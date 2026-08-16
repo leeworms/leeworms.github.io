@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>이재근 · Backend Developer</title>
+  <meta name="description" content="만드는 것과 고치는 것을 좋아하는 이재근의 개인 페이지" />
+  <meta name="theme-color" content="#f8f8f6" />
+
+  <!-- Wanted Sans: official webfont distribution -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"
+  />
+
+  <!-- Iconify / Line MD -->
+  <script
+    src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"
+    defer
+  ></script>
+
+  <style>
+    @font-face {
+      font-family: "Geist";
+      src: url("https://unpkg.com/geist@1.7.0/dist/fonts/geist-sans/Geist-Variable.woff2")
+        format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #f8f8f6;
+      --text: #171716;
+      --muted: #888883;
+      --max: 720px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111111;
+        --text: #f1f1ee;
+        --muted: #92928d;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-width: 320px;
+      background: var(--bg);
+      color-scheme: light dark;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        "Wanted Sans Variable",
+        "Wanted Sans",
+        -apple-system,
+        BlinkMacSystemFont,
+        system-ui,
+        sans-serif;
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      word-break: keep-all;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(calc(100% - 40px), var(--max));
+      min-height: 100svh;
+      margin: 0 auto;
+      display: grid;
+      grid-template-rows: 72px 1fr 72px;
+    }
+
+    header,
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /*
+      Geist is used only for the small interface layer.
+      The Korean identity/body copy stays in Wanted Sans.
+    */
+    .kicker,
+    .links,
+    .meta,
+    footer {
+      font-family:
+        "Geist",
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        system-ui,
+        sans-serif;
+    }
+
+    main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 0;
+      text-align: center;
+    }
+
+    .profile {
+      width: 100%;
+      animation: enter 680ms cubic-bezier(.2,.7,.2,1) both;
+    }
+
+    .kicker {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 10.5px;
+      font-weight: 560;
+      letter-spacing: .145em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family:
+        "Wanted Sans Variable",
+        "Wanted Sans",
+        sans-serif;
+      font-size: clamp(43px, 8vw, 61px);
+      line-height: .98;
+      font-weight: 690;
+      letter-spacing: -0.055em;
+      font-variation-settings: "wght" 690;
+    }
+
+    .statement {
+      max-width: 430px;
+      margin: 32px auto 0;
+      color: var(--muted);
+      font-size: clamp(16px, 2.2vw, 18px);
+      font-weight: 430;
+      line-height: 1.92;
+      letter-spacing: -0.025em;
+      font-variation-settings: "wght" 430;
+    }
+
+    .statement strong {
+      color: var(--text);
+      font-weight: 570;
+      font-variation-settings: "wght" 570;
+    }
+
+    .typing {
+      min-height: 104px;
+    }
+
+    .typing .line {
+      display: block;
+    }
+
+    .typing .line:first-child {
+      color: var(--text);
+      font-weight: 570;
+      font-variation-settings: "wght" 570;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 1px;
+      height: 1em;
+      margin-left: 3px;
+      vertical-align: -0.08em;
+      background: var(--text);
+      animation: blink 900ms steps(1, end) infinite;
+    }
+
+    .typing.done .cursor {
+      animation-duration: 1200ms;
+      opacity: .55;
+    }
+
+    @keyframes blink {
+      0%, 48% { opacity: 1; }
+      49%, 100% { opacity: 0; }
+    }
+
+    .links {
+      margin-top: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 27px;
+      flex-wrap: wrap;
+    }
+
+    .links-pending {
+      pointer-events: none;
+    }
+
+    .links-pending .link {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .links-revealed .link {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .links-revealed .link:nth-child(1) {
+      transition-delay: 40ms;
+    }
+
+    .links-revealed .link:nth-child(2) {
+      transition-delay: 150ms;
+    }
+
+    .links-revealed .link:nth-child(3) {
+      transition-delay: 260ms;
+    }
+
+    .link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      font-weight: 510;
+      letter-spacing: -0.018em;
+      transition:
+        color 160ms ease,
+        opacity 360ms cubic-bezier(.2,.7,.2,1),
+        transform 360ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    .link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 1px;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 180ms ease;
+    }
+
+    .link:hover,
+    .link:focus-visible {
+      color: var(--text);
+      outline: none;
+    }
+
+    .link:hover::after,
+    .link:focus-visible::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .link iconify-icon {
+      width: 17px;
+      height: 17px;
+      font-size: 17px;
+      color: currentColor;
+    }
+
+    .meta {
+      margin-top: 29px;
+      color: var(--muted);
+      font-size: 9.5px;
+      font-weight: 460;
+      letter-spacing: .055em;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 9.5px;
+      font-weight: 450;
+      letter-spacing: .025em;
+    }
+
+    @keyframes enter {
+      from {
+        opacity: 0;
+        transform: translateY(7px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(calc(100% - 28px), var(--max));
+        grid-template-rows: 64px 1fr 64px;
+      }
+
+      main {
+        padding: 56px 0;
+      }
+
+      h1 {
+        font-size: clamp(42px, 13vw, 54px);
+      }
+
+      .statement {
+        max-width: 390px;
+        margin-top: 29px;
+        font-size: 15.5px;
+        line-height: 1.85;
+      }
+
+      .links {
+        gap: 19px;
+        margin-top: 40px;
+      }
+
+      .link {
+        font-size: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .profile {
+        animation: none;
+      }
+
+      .links-pending .link {
+        opacity: 1;
+        transform: none;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header aria-hidden="true"></header>
+
+    <main>
+      <section class="profile" aria-labelledby="profile-title">
+        <p class="kicker">Backend Developer</p>
+
+        <h1 id="profile-title">이재근</h1>
+
+        <p class="statement typing" aria-label="만드는 것과 고치는 것을 좋아합니다. 복잡한 문제를 차분히 풀어내고, 오래 유지할 수 있는 구조를 고민합니다.">
+          <span id="typed-text" aria-hidden="true"></span><span class="cursor" aria-hidden="true"></span>
+        </p>
+
+        <nav class="links links-pending" aria-label="개인 링크">
+          <a
+            class="link"
+            href="https://github.com/leeworms"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <iconify-icon data-icon="line-md:github" aria-hidden="true"></iconify-icon>
+            <span>GitHub</span>
+          </a>
+
+          <a
+            class="link"
+            href="https://ljg960730.tistory.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <iconify-icon data-icon="line-md:edit-twotone" aria-hidden="true"></iconify-icon>
+            <span>Blog</span>
+          </a>
+
+          <a class="link" href="mailto:ljg960730@naver.com">
+            <iconify-icon data-icon="line-md:email" aria-hidden="true"></iconify-icon>
+            <span>Email</span>
+          </a>
+        </nav>
+
+        <p class="meta">SEOUL, KOREA</p>
+      </section>
+    </main>
+
+    <footer>© 2026 Lee Jaekeun</footer>
+  </div>
+
+  <script>
+    const lines = [
+      "만드는 것과 고치는 것을 좋아합니다.",
+      "복잡한 문제를 차분히 풀어내고,",
+      "오래 유지할 수 있는 구조를 고민합니다."
+    ];
+
+    const target = document.getElementById("typed-text");
+    const wrapper = document.querySelector(".typing");
+    const links = document.querySelector(".links");
+    const icons = [...links.querySelectorAll("iconify-icon")];
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const revealLinks = () => {
+      links.classList.remove("links-pending");
+      links.classList.add("links-revealed");
+
+      icons.forEach((icon, index) => {
+        const name = icon.dataset.icon;
+        const delay = reducedMotion ? 0 : 70 + index * 110;
+
+        setTimeout(() => {
+          icon.setAttribute("icon", name);
+        }, delay);
+      });
+    };
+
+    if (reducedMotion) {
+      target.innerHTML = lines
+        .map((line) => `<span class="line">${line}</span>`)
+        .join("");
+      wrapper.classList.add("done");
+      revealLinks();
+    } else {
+      let lineIndex = 0;
+      let charIndex = 0;
+      let currentLine = document.createElement("span");
+      currentLine.className = "line";
+      target.appendChild(currentLine);
+
+      const type = () => {
+        if (lineIndex >= lines.length) {
+          wrapper.classList.add("done");
+          setTimeout(revealLinks, 260);
+          return;
+        }
+
+        const line = lines[lineIndex];
+
+        if (charIndex < line.length) {
+          currentLine.textContent += line[charIndex++];
+          const jitter = 34 + Math.random() * 22;
+          setTimeout(type, jitter);
+          return;
+        }
+
+        lineIndex++;
+        charIndex = 0;
+
+        if (lineIndex < lines.length) {
+          currentLine = document.createElement("span");
+          currentLine.className = "line";
+          target.appendChild(currentLine);
+          setTimeout(type, 240);
+        } else {
+          wrapper.classList.add("done");
+          setTimeout(revealLinks, 260);
+        }
+      };
+
+      setTimeout(type, 420);
+    }
+  </script>
+
+</body>
+</html>
